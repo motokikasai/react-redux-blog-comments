@@ -8,9 +8,9 @@ import Blog from "./components/blog";
 function App() {
   return (
     <div className="App">
-      <section className="header">
+      <div className="header">
         <img src={logo} className="logo" alt="logo" />
-      </section>
+      </div>
       <Router>
         <section className="container">
           <Switch>
