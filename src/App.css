@@ -13,6 +13,15 @@ body {
   width: 60px;
 }
 
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+a:hover {
+  color: rgb(59, 59, 59);
+}
+
 section {
   margin: auto;
   max-width: 600px;
@@ -37,7 +46,7 @@ li:hover {
 }
 
 .blog-wrapper {
-  max-width: 400px;
+  max-width: 540px;
   margin: auto;
 }
 

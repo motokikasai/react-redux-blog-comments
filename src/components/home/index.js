@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import data from "../../db/data.json";
+import { Link } from "react-router-dom";
 
 export default class Home extends Component {
   state = {
@@ -14,14 +15,16 @@ export default class Home extends Component {
         </div>
         <div className="content-list">
           <ul>
-            {this.state.defaultData.map((blog) => {
+            {this.state.defaultData.map(({ title, id, slug }) => {
               return (
-                <li key={blog.id}>
-                  <h3 className="blog-title">{blog.title}</h3>
-                  <div className="snippet-body">
-                    No comments yet, be the first post
-                  </div>
-                </li>
+                <Link to={`/${slug}`}>
+                  <li key={id}>
+                    <h3 className="blog-title">{title}</h3>
+                    <div className="snippet-body">
+                      No comments yet, be the first post
+                    </div>
+                  </li>
+                </Link>
               );
             })}
           </ul>
