@@ -26,6 +26,17 @@ class Blog extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
+
+    if (!this.state.commentInput.trim()) {
+      return false;
+    }
+
+    console.log("clicked!");
+    this.props.addNewComment(this.state.commentInput);
+
+    this.setState({
+      commentInput: "",
+    });
   };
 
   render() {
@@ -92,4 +103,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(/* mapStateToProps, */ mapDispatchToProps)(Blog);
+export default connect(null, mapDispatchToProps)(Blog);
