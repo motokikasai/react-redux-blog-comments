@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import data from "../../db/data.json";
+import Comments from "../comments";
 
-export default class Blog extends Component {
+class Blog extends Component {
   state = {
     defaultData: [...data],
     blog: {},
+    commentInput: "",
   };
 
   createMarkup = () => {
@@ -40,7 +43,15 @@ export default class Blog extends Component {
             <form onSubmit={this.submitHandler}>
               <div className="textarea-title">Leave a comment</div>
 
-              <textarea name="comment" id="comment"></textarea>
+              <textarea
+                name="comment"
+                id="comment"
+                onChange={(e) => {
+                  this.setState({
+                    commentInput: e.target.value,
+                  });
+                }}
+              ></textarea>
 
               <div className="buttons">
                 <button className="btn-clear">Clear</button>
@@ -48,8 +59,37 @@ export default class Blog extends Component {
               </div>
             </form>
           </div>
+
+          {/* BLOG COMMENTS LIST */}
+          <Comments title="My  notes List" />
         </div>
       </div>
     );
   }
 }
+
+// const mapStateToProps = (state, ownProps) => {
+//   console.log(state);
+//   // console.log(ownProps);
+
+//   return {
+//     commentsListData: state.comments.map((comment) => {
+//       return `${comment} -- ${ownProps.title}`;
+//     }),
+//   };
+// };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addNewComment: (commentText) => {
+      dispatch({
+        type: "ADD_COMMENT",
+        payload: {
+          comment: commentText,
+        },
+      });
+    },
+  };
+};
+
+export default connect(/* mapStateToProps, */ mapDispatchToProps)(Blog);
