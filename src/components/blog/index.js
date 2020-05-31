@@ -72,23 +72,12 @@ class Blog extends Component {
           </div>
 
           {/* BLOG COMMENTS LIST */}
-          <Comments title="My  notes List" />
+          <Comments />
         </div>
       </div>
     );
   }
 }
-
-// const mapStateToProps = (state, ownProps) => {
-//   console.log(state);
-//   // console.log(ownProps);
-
-//   return {
-//     commentsListData: state.comments.map((comment) => {
-//       return `${comment} -- ${ownProps.title}`;
-//     }),
-//   };
-// };
 
 const mapDispatchToProps = (dispatch) => {
   return {

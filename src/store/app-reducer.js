@@ -1,5 +1,5 @@
 const initialState = {
-  comments: ["lorem", "ipsum"],
+  comments: [],
 };
 
 function appReducer(state = initialState, action) {

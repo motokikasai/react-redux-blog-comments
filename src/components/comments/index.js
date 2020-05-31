@@ -5,8 +5,6 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        <h1>{this.props.title}</h1>
-
         <ul>
           {this.props.commentsListData.map((item, i) => {
             return <li key={i}>{item}</li>;
@@ -24,6 +22,9 @@ const timeStamp = () => {
     year: "numeric",
     month: "long",
     day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
   };
 
   return event.toLocaleDateString("de-DE", options);
@@ -44,8 +45,6 @@ const mapStateToProps = (state, ownProps) => {
           </div>
         </>
       );
-
-      // `${comment} -- ${ownProps.title}`;
     }),
   };
 };
