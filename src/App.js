@@ -15,7 +15,8 @@ function App() {
         <section className="container">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/:id" component={Blog} />
+            <Route exact path="/:id" component={Blog} />
+            <Route>Error: 404 Not Found</Route>
           </Switch>
         </section>
       </Router>

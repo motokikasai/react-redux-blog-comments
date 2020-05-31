@@ -25,14 +25,9 @@ export default class Blog extends Component {
           <div className="comment">
             <form>
               <div className="textarea-title">Leave a comment</div>
-              <label>
-                <textarea
-                  name="comment"
-                  id="comment"
-                  //   cols="40"
-                  //   rows="5"
-                ></textarea>
-              </label>
+
+              <textarea name="comment" id="comment"></textarea>
+
               <div className="buttons">
                 <button className="btn-clear">Clear</button>
                 <button className="btn-add">Add comment</button>

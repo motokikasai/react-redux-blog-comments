@@ -17,8 +17,8 @@ export default class Home extends Component {
           <ul>
             {this.state.defaultData.map(({ title, id, slug }) => {
               return (
-                <Link to={`/${slug}`}>
-                  <li key={id}>
+                <Link to={`/${slug}`} key={id}>
+                  <li>
                     <h3 className="blog-title">{title}</h3>
                     <div className="snippet-body">
                       No comments yet, be the first post
