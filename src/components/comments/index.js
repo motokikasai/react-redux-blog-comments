@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 class Comments extends Component {
   render() {
+    console.log(this.props);
+
     return (
       <div>
         <ul>
@@ -41,7 +43,9 @@ const mapStateToProps = (state, ownProps) => {
           </div>
           <div className="comment-body">{comment}</div>
           <div className="delete-cmt">
-            <button className="delete-cmt-btn">Delete</button>
+            <button className="delete-cmt-btn" onClick={this.deleteHandler}>
+              Delete
+            </button>
           </div>
         </>
       );
@@ -49,4 +53,15 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(Comments);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteComment: (id) => {
+      dispatch({
+        type: "DELETE_COMMENT",
+        id: id,
+      });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

@@ -10,6 +10,11 @@ function appReducer(state = initialState, action) {
         comments: [...state.comments, action.payload.comment],
       };
 
+    // case "DELETE_COMMENT":
+    //   return {
+    //     ...state,
+    //   };
+
     default:
       return state;
   }

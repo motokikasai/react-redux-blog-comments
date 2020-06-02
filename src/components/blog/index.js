@@ -32,6 +32,8 @@ class Blog extends Component {
     }
 
     console.log("clicked!");
+    console.log(this.props);
+
     this.props.addNewComment(this.state.commentInput);
 
     this.setState({
@@ -40,6 +42,8 @@ class Blog extends Component {
   };
 
   clearInputHandler = () => {
+    console.log("cleared!");
+
     this.setState({
       commentInput: "",
     });
@@ -63,6 +67,7 @@ class Blog extends Component {
               <textarea
                 name="comment"
                 id="comment"
+                value={this.state.commentInput}
                 onChange={(e) => {
                   this.setState({
                     commentInput: e.target.value,
@@ -71,10 +76,10 @@ class Blog extends Component {
               ></textarea>
 
               <div className="buttons">
-                <button className="btn-clear">Clear</button>
-                <button className="btn-add" onClick={this.clearInputHandler}>
-                  Add comment
+                <button className="btn-clear" onClick={this.clearInputHandler}>
+                  Clear
                 </button>
+                <button className="btn-add">Add comment</button>
               </div>
             </form>
           </div>
