@@ -92,9 +92,17 @@ button {
   margin-right: 14px;
 }
 
+.btn-clear:active {
+  background: rgb(231, 231, 231);
+}
+
 .btn-add {
   background: rgb(32, 32, 32);
   color: white;
+}
+
+.btn-add:active {
+  background: rgb(92, 92, 92);
 }
 
 .delete-cmt,

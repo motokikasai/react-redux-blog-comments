@@ -39,6 +39,12 @@ class Blog extends Component {
     });
   };
 
+  clearInputHandler = () => {
+    this.setState({
+      commentInput: "",
+    });
+  };
+
   render() {
     return (
       <div>
@@ -66,7 +72,9 @@ class Blog extends Component {
 
               <div className="buttons">
                 <button className="btn-clear">Clear</button>
-                <button className="btn-add">Add comment</button>
+                <button className="btn-add" onClick={this.clearInputHandler}>
+                  Add comment
+                </button>
               </div>
             </form>
           </div>
