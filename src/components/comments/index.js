@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 
 class Comments extends Component {
   render() {
-    console.log(this.props);
-
     return (
       <div>
         <ul>
           {this.props.commentsListData.map((item, i) => {
+            console.log(item);
+
             return <li key={i}>{item}</li>;
           })}
         </ul>
@@ -43,7 +43,10 @@ const mapStateToProps = (state, ownProps) => {
           </div>
           <div className="comment-body">{comment}</div>
           <div className="delete-cmt">
-            <button className="delete-cmt-btn" onClick={this.deleteHandler}>
+            <button
+              className="delete-cmt-btn"
+              // onClick={this.props.deleteComment}
+            >
               Delete
             </button>
           </div>
