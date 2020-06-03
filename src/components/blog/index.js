@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import data from "../../db/data.json";
 import Comments from "../comments";
+import { v4 as uuidv4 } from "uuid";
 
 class Blog extends Component {
   state = {
     defaultData: [...data],
     blog: {},
     commentInput: "",
+    commentInputObject: {},
   };
 
   createMarkup = () => {
@@ -31,14 +33,13 @@ class Blog extends Component {
       return false;
     }
 
-    console.log("clicked!");
-    console.log(this.props);
-
-    this.props.addNewComment(this.state.commentInput);
-
     this.setState({
       commentInput: "",
     });
+
+    // console.log(uuidv4());
+
+    this.props.addNewComment(this.state.commentInputObject);
   };
 
   clearInputHandler = () => {
@@ -47,6 +48,21 @@ class Blog extends Component {
     this.setState({
       commentInput: "",
     });
+  };
+
+  timeStamp = () => {
+    const event = new Date();
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    };
+
+    return event.toLocaleDateString("de-DE", options);
   };
 
   render() {
@@ -71,6 +87,11 @@ class Blog extends Component {
                 onChange={(e) => {
                   this.setState({
                     commentInput: e.target.value,
+                    commentInputObject: {
+                      text: e.target.value,
+                      id: uuidv4(),
+                      timeStamp: 1234,
+                    },
                   });
                 }}
               ></textarea>
@@ -94,11 +115,13 @@ class Blog extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewComment: (commentText) => {
+    addNewComment: (commentObject) => {
       dispatch({
         type: "ADD_COMMENT",
         payload: {
-          comment: commentText,
+          comment: commentObject.text,
+          id: commentObject.id,
+          timeStamp: commentObject.timeStamp,
         },
       });
     },

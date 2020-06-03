@@ -7,8 +7,7 @@ class Comments extends Component {
       <div>
         <ul>
           {this.props.commentsListData.map((item, i) => {
-            console.log(item);
-
+            // console.log(item);
             return <li key={i}>{item}</li>;
           })}
         </ul>
@@ -17,29 +16,15 @@ class Comments extends Component {
   }
 }
 
-const timeStamp = () => {
-  const event = new Date();
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-  };
-
-  return event.toLocaleDateString("de-DE", options);
-};
-
 const mapStateToProps = (state, ownProps) => {
+  console.log(state.comments);
   return {
     // commentsListData: state.comments
     commentsListData: state.comments.map((comment) => {
       return (
         <>
           <div className="time-stamp">
-            <div className="time-stamp-output">{timeStamp()}</div>
+            <div className="time-stamp-output">{}</div>
           </div>
           <div className="comment-body">{comment}</div>
           <div className="delete-cmt">
@@ -61,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteComment: (id) => {
       dispatch({
         type: "DELETE_COMMENT",
-        id: id,
+        payload: id,
       });
     },
   };
